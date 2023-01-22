@@ -67,7 +67,7 @@ YEval=Events(randIdx(Testsize+1:end));
 %%%%%%%%%%%%%%%%% Load trained models   %%%%%%%%%%%%%%%%%%%%%%
 load(['Models\VAE_3DMatrix_Model_NotEvent_',num2str(framedur),'_sec_','shift_',num2str(shift),'_epochs_',num2str(numEpochs),'.mat']);
 
-%%%%%%%%%% VAE-class0-based reconstruction
+%%%%%%%%%% VAE-class0-based reconstruction %%%%%%%%%%%%%%%%%%%%%%
 display('Evaluate model for NotEvent Only!')
 
 for idx=1:size(XEval,4)
@@ -140,7 +140,7 @@ gamma1=1-w0;
                 end
             end
         
-        elseif method==2 %Non-linear membership function
+        elseif method==2 %Using Non-linear membership function
             a=tau0;
             b=2*tau0;
 
@@ -203,7 +203,7 @@ for k=1:length(YEval)
 % P10=P([mu1L,mu1U]>[mu0L,mu0U]) and P01=P([mu0L,mu0U]>[mu1L,mu1U])
 % YPred(k)=1 --> P10(k)>P01(k) --> Prob([mu1L,mu1U]>[mu0L,mu0U]) > Prob([mu0L,mu0U]>[mu1L,mu1U])
 % YPred(k)=0 --> P10(k)<P01(k) --> Prob([mu1L,mu1U]>[mu0L,mu0U]) < Prob([mu0L,mu0U]>[mu1L,mu1U])
-    %if method>0
+    
    YPred=(P10>P01).';
 %end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
